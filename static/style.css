@@ -1,0 +1,182 @@
+:root {
+        --panel-bg: rgba(41, 49, 79, 0.95);
+        --panel-border: rgba(255, 255, 255, 0.1);
+        --text-primary: #ffffff;
+        --text-secondary: #fcfcfc;
+        --input-bg: #2a2d39;
+        --input-border: #404455;
+        --accent: #3b82f6;
+        --danger: #e45f5f;
+        --danger-hover: #e05b5b;
+        --radius: 10px;
+        --spacing: 16px;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    #map-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    /* Make sure the map fills the container */
+    #map {
+        width: 100%;
+        height: 100%;
+        z-index: 1; /* Map stays in background */
+    }
+
+    /* Floating Panel */
+    .floating-panel {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 320px;
+        background: var(--panel-bg);
+        border: 1px solid var(--panel-border);
+        border-radius: var(--radius);
+        padding: var(--spacing);
+        color: var(--text-primary);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 1000; /* Keeps UI above the Leaflet map */
+    }
+
+    .panel-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--panel-border);
+    }
+
+    .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .control-group label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+
+    select {
+        width: 100%;
+        padding: 8px 12px;
+        background: var(--input-bg);
+        color: var(--text-primary);
+        border: 1px solid var(--input-border);
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        color: var(--text-primary) !important;
+    }
+
+    .alert-banner {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        border-radius: var(--radius);
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .alert-banner strong {
+        color: var(--danger);
+    }
+
+    .btn-danger {
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px;
+        background: var(--danger);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn-danger:hover {
+        background: var(--danger-hover);
+    }
+
+    #dispatchStatus {
+        margin-top: 12px;
+        font-size: 0.8rem;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        border-radius: 4px;
+        border-left: 3px solid var(--accent);
+    }
+
+    .legend-section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .legend-section .panel-title {
+        font-size: 0.9rem;
+        border: none;
+        padding: 0;
+        color: var(--text-secondary);
+    }
+
+    .gradient-bar {
+        height: 12px;
+        border-radius: 6px;
+        background: linear-gradient(to right, #fbbf24, #f97316, #ef4444);
+    }
+
+    .legend-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+    }
+
+    .confidence-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.85rem;
+    }
+
+    .confidence-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .color-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+    }
