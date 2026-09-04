@@ -73,13 +73,14 @@ def api_hotspots():
 #alert 
 @app.route("/api/send-alert", methods=["POST"])
 def send_alert():
-    data=request.json or{}
-    fires=data.get("fires",[])
-    communities=data.get("communities",[])
-    response=dispatch_nearest_authority_alert(fires, communities)
-    status_code = 200 if response.get("status") == "success" else 400
-    return jsonify(response), status_code
+    data = request.get_json() or {}
 
+    response = dispatch_nearest_authority_alert(
+        data.get("fires", []),
+        data.get("communities", [])
+    )
+
+    return jsonify(response)
 
 if __name__ == "__main__":
     app.run(host=config.FLASK_HOST, port=int(config.FLASK_PORT), debug=config.DEBUG_MODE)
