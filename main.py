@@ -12,12 +12,14 @@ app = Flask(__name__)
 def index():
     return render_template("index.html", bbox=config.NEPAL_BBOX)
 
+#data of community
 @app.route("/api/communities")
 def get_communities():
     with open("data/communities.json","r") as f:
         data = json.load(f)
     return jsonify(data)
 
+#nasa api
 @app.route("/api/hotspots")
 def api_hotspots():
     source = request.args.get("source", getattr(config, "FIRMS_SOURCE", "VIIRS_NOAA21_NRT"))
@@ -67,6 +69,8 @@ def api_hotspots():
     except Exception as e:
         print(f"[Error fetching FIRMS]: {e}")
         return jsonify([])
+
+#alert 
 @app.route("/api/send-alert")
 def send_alert():
     data=request.json() or{}
