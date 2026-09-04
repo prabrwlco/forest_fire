@@ -3,7 +3,7 @@
 from flask import Flask, request, jsonify, render_template
 import requests
 import json, csv
-from alert import dispatc
+from alert import dispatch_nearest_authority_alert
 
 import config
 app = Flask(__name__)
@@ -72,7 +72,9 @@ def send_alert():
     data=request.json() or{}
     fires=data.get("fires",[])
     communities=data.get("communities",[])
-    response=nerest
+    response=dispatch_nearest_authority_alert(fires, communities)
+    status_code = 200 if response.get("status") == "success" else 400
+    return jsonify(response), status_code
 
 
 if __name__ == "__main__":
