@@ -20,9 +20,9 @@ map.addLayer(drawnItems);
 
 const drawControl = new L.Control.Draw({
     draw: {
-        polygon: { shapeOptions: { color: '#dc3545', fillColor: '#dc3545', fillOpacity: 0.15, weight: 2 } },
-        circle: { shapeOptions: { color: '#dc3545', fillColor: '#dc3545', fillOpacity: 0.15, weight: 2 } },
-        rectangle: { shapeOptions: { color: '#dc3545', fillColor: '#dc3545', fillOpacity: 0.15, weight: 2 } },
+        polygon: { shapeOptions: { color: '#cb737b', fillColor: '#cb737b', fillOpacity: 0.15, weight: 2 } },
+        circle: { shapeOptions: { color: '#cb737b', fillColor: '#cb737b', fillOpacity: 0.15, weight: 2 } },
+        rectangle: { shapeOptions: { color: '#cb737b', fillColor: '#cb737b', fillOpacity: 0.15, weight: 2 } },
         polyline: false,
         marker: false,
         circlemarker: false

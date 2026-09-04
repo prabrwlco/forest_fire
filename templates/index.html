@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nepal Forest Fire Early Warning Dashboard</title>
+    <title>Nepal forest fire detection</title>
     
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
 </head>
 <body>
-    <header>
-        <h1>Forest Fire Early Warning Dashboard</h1>
-    </header>
+    
 
     <div id="map-container">
-        <!-- Floating Controls Overlay -->
+
+        <div class="map-title">
+            <div>
+                <strong>Forest Fire Monitoring</strong>
+            </div>
+        </div>
+            <!-- Floating Controls Overlay -->
         <div class="floating-panel">
             <div class="panel-title">Layer Controls</div>
 
@@ -33,7 +37,7 @@
                 <select id="timeRange">
                     <option value="1">Last 24 Hours</option>
                     <option value="2">Last 48 Hours</option>
-                    <option value="7">Last 7 Days</option>
+                    <option value="5">Last 5 Days</option>
                 </select>
             </div>
 

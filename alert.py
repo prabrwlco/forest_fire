@@ -1,12 +1,12 @@
-import os,config
+import config
 import smtplib
 import math
 from email.message import EmailMessage
 
 SENDER = config.EMAIL_SENDER
 PASSWORD = config.EMAIL_PASSWORD.replace(" ", "")
-SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_HOST = config.SMTP_HOST
+SMTP_PORT = config.SMTP_PORT
 
 
 def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

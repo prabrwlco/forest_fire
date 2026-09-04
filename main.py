@@ -31,20 +31,20 @@ def api_hotspots():
     try:
         response = requests.get(url, timeout=10)
         if response.status_code != 200:
-            print("error")
+            print("FIRMS ERROR:", response.status_code)
+            print(response.text)
             return jsonify([])
-
         reader = csv.DictReader(response.text.strip().splitlines())
         hotspots = []
         
         for row in reader:
             try:
+                frp = float(row.get("frp", 0.0))
+                confi = row.get("confidence", "n").lower()
                 
-                raw_conf = row.get("confidence", "n").lower()
-                
-                if raw_conf in ["l", "low"] or (raw_conf.isdigit() and int(raw_conf) < 40):
+                if confi in ["l", "low"] or (confi.isdigit() and int(confi) < 40):
                     confidence = "low"
-                elif raw_conf in ["h", "high"] or (raw_conf.isdigit() and int(raw_conf) >= 80):
+                elif confi in ["h", "high"] or (confi.isdigit() and int(confi) >= 80):
                     confidence = "high"
                 else:
                     confidence = "nominal"
@@ -52,10 +52,9 @@ def api_hotspots():
                 hotspots.append({
                 "latitude": float(row["latitude"]),
                 "longitude": float(row["longitude"]),
-                "frp": float(row["frp"]),
+                "frp": frp,
                 "confidence": confidence,
-                "date": row["acq_date"],
-                "time": row["acq_time"]
+               "acq_time": f"{row.get('acq_date', '')} {row.get('acq_time', '')}".strip()
             })
             except (ValueError, KeyError):
                 continue
