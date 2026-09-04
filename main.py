@@ -71,9 +71,9 @@ def api_hotspots():
         return jsonify([])
 
 #alert 
-@app.route("/api/send-alert")
+@app.route("/api/send-alert", methods=["POST"])
 def send_alert():
-    data=request.json() or{}
+    data=request.json or{}
     fires=data.get("fires",[])
     communities=data.get("communities",[])
     response=dispatch_nearest_authority_alert(fires, communities)
