@@ -10,15 +10,10 @@ FIRMS_SOURCE = os.getenv(
     "FIRMS_SOURCE",
     "VIIRS_SNPP_NRT"
 )
-FIRMS_MAP_KEY = os.getenv("FIRMS_MAP_KEY", "16edaa9fdc9c5322428a2160942fd4b4")
-NEPAL_BBOX = os.getenv(
-    "NEPAL_BBOX",
-    "80.0,26.3,88.3,30.5"
-)
+# FIRMS_MAP_KEY = os.getenv("FIRMS_MAP_KEY", "16edaa9fdc9c5322428a2160942fd4b4")
+NEPAL_BBOX = os.getenv("NEPAL_BBOX","80.0,26.3,88.3,30.5")
 
-FIRMS_DAY_RANGE = int(
-    os.getenv("FIRMS_DAY_RANGE", "1")
-)
+FIRMS_DAY_RANGE = int(os.getenv("FIRMS_DAY_RANGE", "1"))
 
 FIRMS_AREA_URL = (
     "https://firms.modaps.eosdis.nasa.gov/api/area/csv/"

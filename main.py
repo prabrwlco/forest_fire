@@ -3,6 +3,7 @@
 from flask import Flask, request, jsonify, render_template
 import requests
 import json, csv
+from alert import dispatc
 
 import config
 app = Flask(__name__)
@@ -66,6 +67,12 @@ def api_hotspots():
     except Exception as e:
         print(f"[Error fetching FIRMS]: {e}")
         return jsonify([])
+@app.route("/api/send-alert")
+def send_alert():
+    data=request.json() or{}
+    fires=data.get("fires",[])
+    communities=data.get("communities",[])
+    response=nerest
 
 
 if __name__ == "__main__":

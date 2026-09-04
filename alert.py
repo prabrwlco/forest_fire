@@ -1,13 +1,10 @@
-import os
+import os,config
 import smtplib
 import math
 from email.message import EmailMessage
-from dotenv import load_dotenv
 
-load_dotenv()
-
-SENDER = os.getenv("EMAIL_SENDER")
-PASSWORD = os.getenv("EMAIL_PASSWORD", "").replace(" ", "")
+SENDER = config.EMAIL_SENDER
+PASSWORD = config.EMAIL_PASSWORD.replace(" ", "")
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 
